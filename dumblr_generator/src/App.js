@@ -13,6 +13,9 @@ class App extends Component {
     // copy all files to DatArchive
     // from /template_build folder + template for content.json, etc
     // (this example only write one file)
+
+    // more accurately, i think you need to read the template_directory
+    // then for each file in the directory, write to new archive.
     await archive.writeFile(
       "/dumblr-test.json",
       `{
