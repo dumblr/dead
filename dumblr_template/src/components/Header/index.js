@@ -28,10 +28,9 @@ class Header extends React.Component {
 
 		return(
 			<header className={styles.Header}>
-				<a onClick={() => this.toggleContentSelection()}>Add an Entry</a>
+				<a className={styles.ContentToggle} onClick={() => this.toggleContentSelection()}>Add an Entry</a>
 
 				<ContentSelection
-					frogs="frogs"
 					open={this.state.contentSelectionOpen}
 				/>
 			</header>

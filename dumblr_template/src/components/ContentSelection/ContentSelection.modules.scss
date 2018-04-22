@@ -2,14 +2,16 @@
 @import '../../styles/variables';
 
 .ContentSelection {
-	background-color: $white;
-	height: 400px;
+	background-color: $transparentWhite;
+	height: 300px;
 	max-height: 0px;
 	opacity: 0;
-	transition: max-height 200ms ease, opacity 200ms ease;
+	position: fixed;
+	transition: max-height 300ms ease, opacity 300ms ease;
+	width: 100%;
 	
 	&__Open {
-		max-height: 400px;
-		opacity: 0.7;
+		max-height: 300px;
+		opacity: 1;
 	}
 }

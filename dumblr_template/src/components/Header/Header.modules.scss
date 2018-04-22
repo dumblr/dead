@@ -6,3 +6,7 @@
 	max-width: $fullwidth;
 	padding: 20px;
 }
+
+.ContentToggle {
+	@include title();
+}

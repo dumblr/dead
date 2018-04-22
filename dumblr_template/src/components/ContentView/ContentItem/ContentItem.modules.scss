@@ -2,13 +2,28 @@
 @import '../../../styles/variables';
 
 .ContentItem {
-	
+	display: grid;
+	grid-auto-rows: minmax(0px, auto);
+	grid-column-gap: 60px;
+	grid-row-gap: 20px;
+	grid-template-columns: 45px auto;
+	padding-bottom: 60px;
 
 	&__Date {
-
+		
+		p {
+			@include title();
+			text-align: right;
+		}
 	}
 
 	&__View {
-		
+		h2 {
+			@include title();
+		}
+	}
+
+	p {
+		max-width: 540px;
 	}
 }
