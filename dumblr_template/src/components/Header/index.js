@@ -12,7 +12,7 @@ class Header extends React.Component {
 	render() {
 
 		return(
-			<header className={`${styles.Header}`}>
+			<header className={styles.Header}>
 				<ContentSelection />
 			</header>
 		);
