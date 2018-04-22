@@ -11,7 +11,7 @@ class ContentSelection extends React.Component {
 	render() {
 
 		return(
-			<div className={styles.ContentSelection}>
+			<div className={`${styles.ContentSelection} ${this.props.open ? styles.ContentSelection__Open : ''}`}>
 				<h1>ContentSelection</h1>
 			</div>
 		);

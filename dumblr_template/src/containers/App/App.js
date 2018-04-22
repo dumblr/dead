@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 
 import Header from '../../components/Header';
-import BlogView from '../../components/BlogView';
+import ContentView from '../../components/ContentView';
 
 class App extends Component {
   render() {
     return (
       <div className="App">
         <Header />
-        <BlogView />
+        <ContentView />
       </div>
     );
   }

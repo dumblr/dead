@@ -1,0 +1,7 @@
+@import '../../styles/mixins';
+@import '../../styles/variables';
+
+.ContentView {
+	margin: 0 auto;
+	max-width: $readwidth;
+}

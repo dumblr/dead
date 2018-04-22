@@ -1,3 +1,15 @@
-.BlogView {
+@import '../../styles/mixins';
+@import '../../styles/variables';
+
+.ContentSelection {
+	background-color: $white;
+	height: 400px;
+	max-height: 0px;
+	opacity: 0;
+	transition: max-height 200ms ease, opacity 200ms ease;
 	
+	&__Open {
+		max-height: 400px;
+		opacity: 0.7;
+	}
 }
