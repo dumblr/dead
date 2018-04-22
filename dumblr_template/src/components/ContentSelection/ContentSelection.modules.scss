@@ -6,12 +6,36 @@
 	height: 300px;
 	max-height: 0px;
 	opacity: 0;
+	padding-top: 60px;
 	position: fixed;
+	top: 0;
 	transition: max-height 300ms ease, opacity 300ms ease;
 	width: 100%;
 	
 	&__Open {
 		max-height: 300px;
 		opacity: 1;
+	}
+
+	&__Items {
+		display: grid;
+		grid-column-gap: 60px;
+		grid-template-columns: repeat(4, 125px);
+	}
+
+	&__Item {
+		cursor: pointer;
+		display: flex;
+		flex-direction: column;
+		text-align: center;
+
+		img {
+			width: 125px;
+			height: auto;
+		}
+
+		p {
+			@include title();
+		}
 	}
 }

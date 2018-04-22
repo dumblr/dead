@@ -19,4 +19,4 @@ const ContentItem = (props) => {
 	)
 }
 
-export default ContentItem
+export default ContentItem;

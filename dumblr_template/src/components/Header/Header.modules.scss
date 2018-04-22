@@ -9,4 +9,7 @@
 
 .ContentToggle {
 	@include title();
+	cursor: pointer;
+	position: relative;
+	z-index: 10;
 }

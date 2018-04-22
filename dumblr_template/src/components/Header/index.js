@@ -10,15 +10,15 @@ class Header extends React.Component {
 			contentSelectionOpen: false,
 		}
 
-			this.toggleContentSelection = this.toggleContentSelection.bind(this)
-		}
+		this.toggleContentSelection = this.toggleContentSelection.bind(this)
+	}
 
 	componentDidMount() {
 
 	}
 
 	toggleContentSelection() {
-		console.log('frogs', this.state)
+		
 		this.setState({
 			contentSelectionOpen: !this.state.contentSelectionOpen,
 		})
@@ -28,7 +28,9 @@ class Header extends React.Component {
 
 		return(
 			<header className={styles.Header}>
-				<a className={styles.ContentToggle} onClick={() => this.toggleContentSelection()}>Add an Entry</a>
+				<a className={styles.ContentToggle} onClick={() => this.toggleContentSelection()}>
+					{this.state.contentSelectionOpen ? 'Close' : 'Add an entry'}
+				</a>
 
 				<ContentSelection
 					open={this.state.contentSelectionOpen}
