@@ -1,0 +1,8 @@
+@import '../../styles/mixins';
+@import '../../styles/variables';
+
+.Header {
+	margin: 0 auto;
+	max-width: $fullwidth;
+	padding: 20px;
+}
