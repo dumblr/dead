@@ -2,9 +2,12 @@
 @import '../../styles/variables';
 
 .Header {
+	background-color: $transparentWhite;
 	margin: 0 auto;
 	max-width: $fullwidth;
-	padding: 20px;
+	padding: 18px 20px;
+	position: fixed;
+	width: 100%;
 }
 
 .ContentToggle {
