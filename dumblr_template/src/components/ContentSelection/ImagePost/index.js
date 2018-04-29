@@ -6,21 +6,39 @@ import Button from '../../SharedComponents/Button';
 
 class ImagePost extends React.Component {
 	constructor(props) {
-		super(props);
+		super(props)
 		this.state = {
-			
+			titleImage: '',
+			descriptionImage: '',
+			whisperImage: '',
 		}
 
-		// this.toggleContentSelection = this.toggleContentSelection.bind(this)
+		this.valueUpdater = this.valueUpdater.bind(this)
+	}
+
+	valueUpdater = field => (event) => {
+		let value = event.target.value;
+
+		const newState = {
+			...this.state,
+			[field]: value,
+		};
+
+		this.setState(newState);
 	}
 
 	render() {
 
 		return (
 			<div className={styles.ImagePost}>
-				<form className={styles.Box} enctype="multipart/form-data">
-					<input type="text" placeholder="title" />
-					<div className={styles.Box__Input}>
+				<form enctype="multipart/form-data">
+
+					<div className={`${styles.FormElement} ${this.state.titleImage !== '' ? styles.FormElementActive : ''}`}>
+						<input id="title-entry" type="text" name='title' value={this.state.titleImage} onChange={this.valueUpdater('titleImage')} />
+						<label htmlFor="title-entry">Title</label>
+					</div>
+
+					<div className={styles.Box}>
 						<input 
 							className={styles.Box__File}
 							type="file" 
@@ -33,11 +51,21 @@ class ImagePost extends React.Component {
 							Choose a file 
 							<span className={styles.Box__Dragndrop}> or drag it here</span>
 						</label>
-						<Button 
-							buttonText={'Upload Image'}
-						/>
 					</div>
-					<input type="text" placeholder="Image Description" />
+					
+					<div className={`${styles.FormElement} ${this.state.descriptionImage !== '' ? styles.FormElementActive : ''}`}>
+						<input id="description-entry" type="text" name='title' value={this.state.descriptionImage} onChange={this.valueUpdater('descriptionImage')} />
+						<label htmlFor="description-entry">Image Description</label>
+					</div>
+
+					<div className={styles.FormElementCheckbox}>
+						<input type="checkbox" id="whisperImage" />
+						<label for="whisperImage">Keep this post to myself</label>
+					</div>
+
+					<Button 
+						buttonText={'Upload Image'}
+					/>
 				</form>
 			</div>
 		)

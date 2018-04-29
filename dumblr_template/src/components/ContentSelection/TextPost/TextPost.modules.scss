@@ -49,31 +49,31 @@
 }
 
 .FormElementCheckbox {
-      align-items: center;
-      display: flex;
-      justify-content: flex-start;
+	align-items: center;
+	display: flex;
+	justify-content: flex-start;
 
-      input[type="checkbox"] {
-        -webkit-appearance: none;
-        appearance: none;
-        backface-visibility: hidden;
-        background: $white;
-        margin-bottom: 20px;
-        outline: none;
-        position: relative;
-        transition: background 200ms ease;
-        z-index: 2;
+	input[type="checkbox"] {
+		-webkit-appearance: none;
+		appearance: none;
+		backface-visibility: hidden;
+		background: $white;
+		margin-bottom: 20px;
+		outline: none;
+		position: relative;
+		transition: background 200ms ease;
+		z-index: 2;
 
-        &:checked {
-          background: $black;
+		&:checked {
+			background: $black;
 
-          ~ label {
-          	opacity: 1.0;
-          }
-        }
-      }
+			~ label {
+				opacity: 1.0;
+			}
+		}
+	}
 
-      label {
+    label {
       	color: $black;
         font-size: 12px;
         font-weight: bold;
@@ -83,8 +83,7 @@
         top: -8px;
         text-transform: uppercase;
         transition: opacity 200ms ease;
-      }
-
+    }
 }
 
 .FormElementTextArea {
