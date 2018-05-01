@@ -31,7 +31,7 @@ class ImagePost extends React.Component {
 
 		return (
 			<div className={styles.ImagePost}>
-				<form enctype="multipart/form-data">
+				<form encType="multipart/form-data">
 
 					<div className={`${styles.FormElement} ${this.state.titleImage !== '' ? styles.FormElementActive : ''}`}>
 						<input id="title-entry" type="text" name='title' value={this.state.titleImage} onChange={this.valueUpdater('titleImage')} />
@@ -47,7 +47,7 @@ class ImagePost extends React.Component {
 							data-multiple-caption="{count} files selected" 
 							multiple 
 						/>
-						<label for="file">
+						<label htmlFor="file">
 							Choose a file 
 							<span className={styles.Box__Dragndrop}> or drag it here</span>
 						</label>
@@ -60,7 +60,7 @@ class ImagePost extends React.Component {
 
 					<div className={styles.FormElementCheckbox}>
 						<input type="checkbox" id="whisperImage" />
-						<label for="whisperImage">Keep this post to myself</label>
+						<label htmlFor="whisperImage">Keep this post to myself</label>
 					</div>
 
 					<Button 

@@ -5,6 +5,9 @@ import styles from './ContentItem.modules.scss';
 
 const ContentItem = (props) => {
 
+	let DateItem = new Date(props.vals.postDate);
+	let Time = DateItem.getHours() + `:` + DateItem.getMinutes();
+
 	return (
 		<div className={styles.ContentItem}>
 			<div className={styles.ContentItem__Date}>
@@ -12,7 +15,8 @@ const ContentItem = (props) => {
 			</div>
 			
 			<div className={styles.ContentItem__View}>
-				<h2>{props.vals.postAuthorEmoji} {props.vals.postAuthor} @ {`03:45`}</h2>
+				<h2>{props.vals.postAuthorEmoji} {props.vals.postAuthor} @ {Time}</h2>
+				<h3>{props.vals.postTitle}</h3>
 				<p>{props.vals.postText}</p>
 			</div>
 		</div>
