@@ -32,7 +32,6 @@ class TextPost extends React.Component {
 		return (
 			<div className={styles.TextPost}>
 				<form id="textformSubmit">
-					
 					<div className={`${styles.FormElement} ${this.state.titleContent !== '' ? styles.FormElementActive : ''}`}>
 						<input id="title-entry" type="text" name='title' value={this.state.titleContent} onChange={this.valueUpdater('titleContent')} />
 						<label htmlFor="title-entry">Title</label>
@@ -54,7 +53,6 @@ class TextPost extends React.Component {
 						<input type="checkbox" id="whisperPost" />
 						<label htmlFor="whisperPost">Keep this post to myself</label>
 					</div>
-
 				</form>
 				<Button />
 			</div>

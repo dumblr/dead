@@ -1,7 +1,6 @@
 import React from 'react'
 
 import styles from './ImagePost.modules.scss';
-
 import Button from '../../SharedComponents/Button';
 
 class ImagePost extends React.Component {
@@ -32,7 +31,6 @@ class ImagePost extends React.Component {
 		return (
 			<div className={styles.ImagePost}>
 				<form encType="multipart/form-data">
-
 					<div className={`${styles.FormElement} ${this.state.titleImage !== '' ? styles.FormElementActive : ''}`}>
 						<input id="title-entry" type="text" name='title' value={this.state.titleImage} onChange={this.valueUpdater('titleImage')} />
 						<label htmlFor="title-entry">Title</label>

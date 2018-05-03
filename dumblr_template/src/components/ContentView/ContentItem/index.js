@@ -26,7 +26,7 @@ const ContentItem = (props) => {
 		case Month === 10: MonthWord = 'November'; break;
 		case Month === 11: MonthWord = 'December'; break;
 		default: MonthWord = '';
-    }
+   }
 
 	return (
 		<div className={styles.ContentItem}>
