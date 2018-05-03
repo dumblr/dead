@@ -1,11 +1,13 @@
 import React from 'react'
 
 import styles from './ContentItem.modules.scss';
-
+import TextPost from './TextPost';
+import ImagePost from './ImagePost';
 
 const ContentItem = (props) => {
 	let DateItem = new Date(props.vals.date);
-	let Time = DateItem.getHours() + `:` + DateItem.getMinutes();
+	let Minutes = (DateItem.getMinutes() < 10 ?'0' : '') + DateItem.getMinutes();
+	let Time = DateItem.getHours() + `:` + Minutes;
 	let Month = DateItem.getMonth();
 	let Day = DateItem.getDate();
 	let MonthWord;
@@ -23,6 +25,7 @@ const ContentItem = (props) => {
 		case Month === 9: MonthWord = 'October'; break;
 		case Month === 10: MonthWord = 'November'; break;
 		case Month === 11: MonthWord = 'December'; break;
+		default: MonthWord = '';
     }
 
 	return (
@@ -30,19 +33,11 @@ const ContentItem = (props) => {
 			<div className={styles.ContentItem__Date}>
 				<p>{MonthWord}<br />{Day}</p>
 			</div>
-			
 			<div className={styles.ContentItem__View}>
 				<h2>{props.vals.author_avatar} {props.vals.author} @ {Time}</h2>
 				<h3>{props.vals.title}</h3>
-				{props.vals.text_data.length > 0 && props.vals.text_data.map((item, i) =>
-					<div key={i}>
-						{item.html_tag === "p" && <p>{item.content}</p>}
-						{item.html_tag === "h1" && <h1>{item.content}</h1>}
-						{item.html_tag === "h2" && <h2>{item.content}</h2>}
-						{item.html_tag === "h3" && <h3>{item.content}</h3> }
-						{item.html_tag === "h4" && <h4>{item.content}</h4> }
-					</div>
-				)}
+				{props.vals.type === 'text' && <TextPost text_data={props.vals.text_data} />}
+				{props.vals.type === 'image' && <ImagePost source={props.vals.asset_ref} altText={props.vals.asset_description} />}
 			</div>
 		</div>
 	)
