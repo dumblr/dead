@@ -10,19 +10,39 @@ class App extends Component {
 			myPosts: [],
 		}
 
-		// this.valueUpdater = this.valueUpdater.bind(this)
+		this.getMyPosts = this.getMyPosts.bind(this)
 	}
 
 	componentDidMount() {
-		console.log('data', this.props.myData)
+		this.getMyPosts(this.props.myData, this)
+	}
+
+	getMyPosts = (headJson, that) => {
+
+		Object.keys(headJson.posts).forEach(function(key) {
+			fetch(process.env.PUBLIC_URL + `/files/mine/posts/` + headJson.posts[key].id + `.json`)
+			.then(function(response) {
+				return response.json();
+			})
+			.then(function(myJson) {
+				let myPosts = that.state.myPosts;
+				myPosts.push(myJson)
+				that.setState({
+					myPosts: myPosts
+				})
+			});
+
+			// console.log('data', headJson.posts[key], headJson.posts[key].id, headJson.posts[key].date);
+	    });
 	}
 
 	render() {
-		
 		return (
 			<div className="App">
 				<Header />
-				<ContentView />
+				<ContentView 
+					myPosts={this.state.myPosts}
+				/>
 			</div>
 		);
 	}

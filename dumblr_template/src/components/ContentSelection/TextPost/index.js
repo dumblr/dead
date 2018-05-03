@@ -52,7 +52,7 @@ class TextPost extends React.Component {
 
 					<div className={styles.FormElementCheckbox}>
 						<input type="checkbox" id="whisperPost" />
-						<label for="whisperPost">Keep this post to myself</label>
+						<label htmlFor="whisperPost">Keep this post to myself</label>
 					</div>
 
 				</form>
