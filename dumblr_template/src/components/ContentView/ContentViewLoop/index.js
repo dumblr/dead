@@ -3,6 +3,7 @@ import React from 'react';
 import ContentItem from '../ContentItem';
 
 const ContentViewLoop = ({posts}) => {
+	console.log('posts', posts)
 	if(posts.length > 0) {
 		return(
 			<div>
