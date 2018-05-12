@@ -8,11 +8,9 @@ class Header extends React.Component {
 		super(props);
 		this.state = {
 			contentSelectionOpen: false,
-			contentViewType: 'theirs',
 		}
 
 		this.toggleContentSelection = this.toggleContentSelection.bind(this);
-		this.toggleContentViewType = this.toggleContentViewType.bind(this);
 	}
 
 	componentDidMount() {
@@ -22,12 +20,6 @@ class Header extends React.Component {
 	toggleContentSelection() {
 		this.setState({
 			contentSelectionOpen: !this.state.contentSelectionOpen,
-		})
-	}
-
-	toggleContentViewType(val) {
-		this.setState({
-			contentViewType: val,
 		})
 	}
 
@@ -43,18 +35,18 @@ class Header extends React.Component {
 						<a 
 							className={`
 								${styles.ContentDisplayToggle__Item} 
-								${this.state.contentViewType === 'mine' ? styles.ContentDisplayToggle__Item_Selected : ''}
+								${this.props.postDisplay === 'mine' ? styles.ContentDisplayToggle__Item_Selected : ''}
 							`} 
-							onClick={() => this.toggleContentViewType('mine')}
+							onClick={() => this.props.togglePostDisplay('mine')}
 						>
 							<img src="/images/icon-smile.svg" alt="show my posts" />
 						</a>
 						<a 
 							className={`
 								${styles.ContentDisplayToggle__Item} 
-								${this.state.contentViewType === 'theirs' ? styles.ContentDisplayToggle__Item_Selected : ''}
+								${this.props.postDisplay === 'theirs' ? styles.ContentDisplayToggle__Item_Selected : ''}
 							`} 
-							onClick={() => this.toggleContentViewType('theirs')}
+							onClick={() => this.props.togglePostDisplay('theirs')}
 						>
 							<img src="/images/icon-group.svg" alt="show their posts" />
 						</a>

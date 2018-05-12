@@ -1,23 +1,18 @@
-import React from 'react'
+import React from 'react';
 
 import styles from './ContentView.modules.scss';
-import ContentItem from './ContentItem';
+import ContentViewLoop from './ContentViewLoop';
 
 class ContentView extends React.Component {
-
-	componentDidMount() {
-
-	}
 
 	render() {
 		return(
 			<section className={styles.ContentView}>
-				{this.props.myPosts.map((item, i) =>
-					<ContentItem vals={item} key={i} />
-				)}
+				{this.props.postDisplay === 'mine' && <ContentViewLoop posts={this.props.myPosts} />}
+				{this.props.postDisplay === 'theirs' && <ContentViewLoop posts={this.props.theirPosts} />}
 			</section>
 		);
 	}
 }
 
-export default ContentView
+export default ContentView;
