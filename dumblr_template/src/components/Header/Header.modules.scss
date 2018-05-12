@@ -8,11 +8,53 @@
 	padding: 18px 20px;
 	position: fixed;
 	width: 100%;
+
+	&__Nav {
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		position: relative;
+		z-index: 4;
+	}
 }
 
 .ContentToggle {
-	@include title();
 	cursor: pointer;
+	display: inline-block;
 	position: relative;
-	z-index: 10;
+	tranform: rotate(0deg);
+	transition: transform 200ms ease;
+
+	&_Open {
+		transform: rotate(45deg);
+	}
+
+	img {
+		height: auto;
+		width: 40px;
+	}
+}
+
+.ContentDisplayToggle {
+
+	&__Item {
+		cursor: pointer;
+		display: inline-block;
+		margin-left: 15px;
+		opacity: 0.4;
+		transition: opacity 200ms ease;
+
+		&:hover {
+			opacity: 0.7;
+		}
+
+		&_Selected {
+			opacity: 1.0;
+		}
+	}
+
+	img {
+		height: auto;
+		width: 40px;
+	}
 }
