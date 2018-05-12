@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.scss';
 import App from './containers/App/App';
-import registerServiceWorker from './registerServiceWorker';
+// import registerServiceWorker from './registerServiceWorker';
 
 // let xhttp = new XMLHttpRequest();
 
@@ -19,4 +19,4 @@ import registerServiceWorker from './registerServiceWorker';
 
 ReactDOM.render(<App myData={``} />, document.getElementById('root'));
 
-registerServiceWorker();
+// registerServiceWorker();

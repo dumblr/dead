@@ -13,25 +13,46 @@ class ContentView extends React.Component {
 		}
 
 		this.getMyPosts = this.getMyPosts.bind(this);
+		this.pushPost = this.pushPost.bind(this);
+
 		this.getTheirPosts = this.getTheirPosts.bind(this);
 		// this.getHeadJson = this.getHeadJson.bind(this);
 	}
 
 	componentDidMount() {
-		// let myDataHead = this.getHeadJson();
+		const archive = new global.DatArchive(`a3edeacf33ac8be2244dd43b7137c1b573e6207d757abf116fa047020791eabb/`);
 
-		// this.getMyPosts(myDataHead, this);
-		// this.getTheirPosts(myDataHead, this);
-		this.getMyPosts();
-		this.getTheirPosts();
+		this.getMyPosts(archive);
+		// this.getTheirPosts();
 	}
 
-	getMyPosts = () => {
-		console.log('my posts');
+	async getMyPosts(archive) {
+		let myHead = await archive.readFile('/files/mine/head.json');
+		console.log('myHead', myHead, JSON.parse(myHead))
+
+		await JSON.parse(myHead).posts.map((post, key) => {
+			this.pushPost(post.id, archive)
+		});
+		
+		// Object.keys(myHead.posts).forEach(function(key) {
+		// 	this.pushPosts(myHead.posts[key].id, archive)
+		// });
+	}
+
+	async pushPost(postId, archive) {
+		let post = await archive.readFile(`/files/mine/posts/` + postId + `.json`);
+		let myPosts = this.state.myPosts;
+
+		console.log('post', post)
+
+		myPosts.push(JSON.parse(post));
+		this.setState({
+			myPosts: myPosts
+		});
 	}
 
 	getTheirPosts = () => {
-		console.log('their posts');
+
 	}
 
 	// getHeadJson = () => {
@@ -57,7 +78,6 @@ class ContentView extends React.Component {
 	// 				myPosts: myPosts
 	// 			})
 	// 		});
-
 	// 	});
 	// }
 
