@@ -29,10 +29,11 @@ form, input, textarea {
 }
 
 input[type="checkbox"] {
-	width: 15px;
-	height: 15px;
 	border: 1px solid #000000;
+	border-radius: 2px;
+	height: 15px;
 	transition: background-color 200ms ease;
+	width: 15px;
 
 	&:checked {
 		background-color: #000000;
