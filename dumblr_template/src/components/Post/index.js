@@ -1,22 +1,16 @@
 import React from 'react'
 
+import ContentItem from '../../components/ContentView/ContentItem';
 import styles from './Post.modules.scss';
 
-class Post extends React.Component {
-
-	componentDidMount() {
-
-	}
-
-	render() {
-
+const Post = ({data}) => {
 		return(
 			<div className={styles.Post}>
-				<h1>Post View</h1>
-				<p>Lorem Ipsum</p>
+				<ContentItem
+					vals={data}
+				/>
 			</div>
 		);
-	}
 }
 
 export default Post;

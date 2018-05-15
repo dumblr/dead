@@ -9,7 +9,7 @@ const App = () => {
 		<Router>
 			<div>
 				<Route exact path="/" component={ContentViewContainer} />
-				<Route path="/post" component={PostContainer} />
+				<Route path="/post/:postId" component={PostContainer} />
 			</div>
 		</Router>
 	);

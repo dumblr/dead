@@ -10,7 +10,7 @@
 	padding-bottom: 60px;
 
 	&__Date {
-		
+
 		p {
 			@include title();
 			text-align: right;
@@ -18,8 +18,17 @@
 	}
 
 	&__View {
+
 		h2 {
 			@include title();
+		}
+
+		h3 {
+
+			a {
+				color: $black;
+				text-decoration: none;
+			}
 		}
 	}
 

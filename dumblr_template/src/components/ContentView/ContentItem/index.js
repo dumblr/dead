@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 import styles from './ContentItem.modules.scss';
 import TextPost from './TextPost';
@@ -35,7 +36,7 @@ const ContentItem = (props) => {
 			</div>
 			<div className={styles.ContentItem__View}>
 				<h2>{props.vals.author_avatar} {props.vals.author} @ {Time}</h2>
-				<h3>{props.vals.title}</h3>
+				<h3><Link to={'/post/' + props.vals.id}>{props.vals.title}</Link></h3>
 				{props.vals.type === 'text' && <TextPost text_data={props.vals.text_data} />}
 				{props.vals.type === 'image' && <ImagePost source={props.vals.asset_ref} altText={props.vals.asset_description} />}
 			</div>
