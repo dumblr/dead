@@ -1,51 +1,18 @@
 import React, { Component } from 'react';
+import { BrowserRouter as Router, Route } from "react-router-dom";
 
-import Header from '../../components/Header';
-import ContentView from '../../components/ContentView';
+import ContentViewContainer from '../ContentViewContainer';
+import PostContainer from '../PostContainer';
 
-class App extends Component {
-	constructor(props) {
-		super(props)
-		this.state = {
-			myPosts: [],
-		}
-
-		this.getMyPosts = this.getMyPosts.bind(this)
-	}
-
-	componentDidMount() {
-		this.getMyPosts(this.props.myData, this)
-	}
-
-	getMyPosts = (headJson, that) => {
-
-		Object.keys(headJson.posts).forEach(function(key) {
-			fetch(process.env.PUBLIC_URL + `/files/mine/posts/` + headJson.posts[key].id + `.json`)
-			.then(function(response) {
-				return response.json();
-			})
-			.then(function(myJson) {
-				let myPosts = that.state.myPosts;
-				myPosts.push(myJson)
-				that.setState({
-					myPosts: myPosts
-				})
-			});
-
-			// console.log('data', headJson.posts[key], headJson.posts[key].id, headJson.posts[key].date);
-	    });
-	}
-
-	render() {
-		return (
-			<div className="App">
-				<Header />
-				<ContentView 
-					myPosts={this.state.myPosts}
-				/>
+const App = () => {
+	return (
+		<Router>
+			<div>
+				<Route exact path="/" component={ContentViewContainer} />
+				<Route path="/post/:postId" component={PostContainer} />
 			</div>
-		);
-	}
+		</Router>
+	);
 }
 
 export default App;
