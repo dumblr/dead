@@ -20,18 +20,16 @@ class ContentView extends React.Component {
   }
 
   componentDidMount() {
-    //--- James Home
-    // const archive = new global.DatArchive(`a3edeacf33ac8be2244dd43b7137c1b573e6207d757abf116fa047020791eabb/`);
-    //--- James Alt
-    // const archive = global.DatArchive(
-    //   `0b98d0904d15440351a770cb5e62c95c7f2b3d6a88d651d3427ad94e76bfc2f1`
-    // );
-    // this.getMyPosts(archive);
+    //--- Include Dat address here....
+    const archive = new global.DatArchive(
+      `e03d0ae6a70caebf2f65408b77d5737ff18863568618594132ea7f76861852e7`
+    );
+    this.getMyPosts(archive);
     // this.getTheirPosts(archive);
   }
 
   async getMyPosts(archive) {
-    let myHead = await archive.readFile("/files/mine/head.json");
+    let myHead = await archive.readFile("/mine/head.json");
 
     await JSON.parse(myHead).posts.map((post, key) => {
       this.pushMyPosts(post.id, archive);
@@ -39,7 +37,7 @@ class ContentView extends React.Component {
   }
 
   async getTheirPosts(archive) {
-    let myHead = await archive.readFile("/files/theirs/head.json");
+    let myHead = await archive.readFile("/theirs/head.json");
 
     await JSON.parse(myHead).posts.map((post, key) => {
       this.pushTheirPosts(post.id, archive);
@@ -47,7 +45,7 @@ class ContentView extends React.Component {
   }
 
   async pushMyPosts(postId, archive) {
-    let post = await archive.readFile(`/files/mine/posts/` + postId + `.json`);
+    let post = await archive.readFile(`/mine/posts/` + postId + `.json`);
     let myPosts = this.state.myPosts;
 
     myPosts.push(JSON.parse(post));

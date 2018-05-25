@@ -23,11 +23,10 @@ class PostContainer extends React.Component {
 
   async getPost(archive, postId) {
     let myPost = await archive.readFile(
-      "/files/mine/posts/" + postId + ".json"
+      "/mine/posts/" + postId + ".json"
     );
     let post = JSON.parse(myPost);
 
-    console.log(archive, postId, JSON.parse(myPost));
     this.setState({
       postData: post
     });
@@ -35,7 +34,7 @@ class PostContainer extends React.Component {
 
   componentDidMount() {
     const archive = new global.DatArchive(
-      `0b98d0904d15440351a770cb5e62c95c7f2b3d6a88d651d3427ad94e76bfc2f1`
+      `e03d0ae6a70caebf2f65408b77d5737ff18863568618594132ea7f76861852e7`
     );
     this.getPost(archive, this.props.match.params.postId);
   }

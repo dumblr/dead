@@ -4,6 +4,10 @@ import styles from './TextPost.modules.scss';
 
 import Button from '../../SharedComponents/Button';
 
+const archive = new global.DatArchive(
+	`e03d0ae6a70caebf2f65408b77d5737ff18863568618594132ea7f76861852e7`
+);
+
 class TextPost extends React.Component {
 	constructor(props) {
 		super(props)
@@ -13,7 +17,19 @@ class TextPost extends React.Component {
 			whisperContent: '',
 		}
 
-		this.valueUpdater = this.valueUpdater.bind(this)
+		this.valueUpdater = this.valueUpdater.bind(this);
+		this.createTextPost = this.createTextPost.bind(this);
+		this.makeId = this.makeId.bind(this);
+	}
+
+	makeId() {
+		var id = "";
+		var vals = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+		for (var i = 0; i < 16; i++) {
+			id += vals.charAt(Math.floor(Math.random() * vals.length));
+		}
+		return id
 	}
 
 	valueUpdater = field => (event) => {
@@ -25,6 +41,36 @@ class TextPost extends React.Component {
 		};
 
 		this.setState(newState);
+	}
+
+	async createTextPost() {
+		let title = this.state.titleContent;
+		let slug = title.toLowerCase().replace(/ /g,'-').replace(/[^\w-]+/g,'');
+		let text = this.state.textContent;
+		let id = this.makeId();
+		let date = new Date().toString();
+		let outputJson = {
+			"id": "3456789123456789",
+			"date": date,
+			"type": "text",
+			"title": title,
+			"slug": slug,
+			"author": "frogs",
+			"author_address": "#",
+			"author_avatar": "😈",
+			"asset_ref": false,
+			"asset_description": false,
+			"text_data": [
+				{
+					"html_tag": "p",
+					"content": text
+				}
+			]
+		};
+
+		await archive.writeFile('/mine/posts/' + id + '.json', outputJson)
+
+		console.log('frogs', outputJson)
 	}
 
 	render() {
@@ -54,7 +100,7 @@ class TextPost extends React.Component {
 						<label htmlFor="whisperPost">Keep this post to myself</label>
 					</div>
 				</form>
-				<Button />
+				<Button buttonClickFunction={this.createTextPost}/>
 			</div>
 		)
 	}
